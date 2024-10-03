@@ -7,7 +7,7 @@ The application focuses on creating an intuitive and easy-to-use user experience
 ## Table of Contents
 
 - [Project](#project)
-- [Contact](#contact)
+- [Members](#members)
 
 ## Project
 
@@ -20,11 +20,6 @@ This project consists of creating a virtual second-hand clothing store applicati
   - Product search and selection
   - Payment and shipping
   - Reviews and ratings
-- **Technologies used:** Python
-- **Files:**
-  - Technical report
-  - Article
-  - Poster
 
 ##   Members
 
