@@ -1,4 +1,4 @@
-# Virtual Second-Hand Clothing Store Application Repository
+# EcoVibe Repository: Application for buying and selling second-hand clothing
 
 This repository includes all the designs and progress of the project to create a virtual second-hand clothing store application, where concepts learned in class are applied. The application is designed to provide an easy-to-use platform for users to search and select second-hand clothing products, add them to the cart, and make secure payments.
 
