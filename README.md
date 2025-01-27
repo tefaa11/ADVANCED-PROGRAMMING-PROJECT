@@ -28,5 +28,5 @@ This project consists of creating a virtual second-hand clothing store applicati
 - **Email:** csvelascor@udistrital.edu.co
 - ----------------------------------------
 - **Name:** David Eduardo Muñoz                
-- **University ID:** 0232020281
+- **University ID:** 20232020281
 - **Email:** demunozm@udistrital.edu.co
