@@ -21,30 +21,29 @@
     </properties>
 
     <dependencies>
-        <!-- Spring Boot Web (para manejar solicitudes HTTP y controladores) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Spring Boot Security (para autenticación y autorización) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- Dependencias de JWT (Json Web Token) -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
             <version>0.11.5</version>
         </dependency>
+
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
             <version>0.11.5</version>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
@@ -52,29 +51,25 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Dependencia para trabajar con Jakarta Servlet (Spring Boot 3 usa Jakarta en lugar de javax) -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version> <!-- Compatible con Spring Boot 3.x -->
+            <version>5.0.0</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Lombok (para reducir código repetitivo como getters, setters, etc.) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Dependencia para las pruebas con Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- Dependencia para pruebas de Spring Security -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
@@ -83,8 +78,7 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <!-- Plugin de compilador de Maven -->
+        <plugins>    
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -100,7 +94,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin para empaquetar la aplicación Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
