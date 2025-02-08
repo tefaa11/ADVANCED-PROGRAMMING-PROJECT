@@ -6,23 +6,23 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 CORS(app)
 
-# Configuración de la carpeta de subida
+# Upload folder configuration
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# 🆕 Limpiar la carpeta 'uploads' al iniciar la app
+# Clear the 'uploads' folder on server start
 for filename in os.listdir(UPLOAD_FOLDER):
     file_path = os.path.join(UPLOAD_FOLDER, filename)
     try:
         if os.path.isfile(file_path) or os.path.islink(file_path):
-            os.unlink(file_path)  # Eliminar archivo o enlace simbólico
+            os.unlink(file_path)  # Delete file or symbolic link
         elif os.path.isdir(file_path):
-            os.rmdir(file_path)  # Eliminar directorios vacíos (opcional)
+            os.rmdir(file_path)  # Delete empty directories (optional)
     except Exception as e:
-        print(f'Error al borrar {file_path}. Razón: {e}')
+        print(f'Error deleting {file_path}. Reason: {e}')
 
-# Simulación en memoria de productos
+# In-memory product storage
 products = []
 product_id_counter = 1
 
@@ -30,12 +30,12 @@ product_id_counter = 1
 def home():
     return "Flask server running correctly"
 
-# Ruta para servir imágenes
+# Route to serve images
 @app.route('/uploads/<filename>')
 def get_uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
-# Ruta para obtener y agregar productos
+# Route to get and add products
 @app.route('/products', methods=['GET', 'POST'])
 def manage_products():
     global product_id_counter
@@ -68,7 +68,7 @@ def manage_products():
 
         return jsonify({"message": "Product added", "product": product}), 201
 
-# Ruta para obtener un producto por su ID
+# Route to get a product by its ID
 @app.route('/products/<int:product_id>', methods=['GET'])
 def get_product_by_id(product_id):
     product = next((p for p in products if p["id"] == product_id), None)
