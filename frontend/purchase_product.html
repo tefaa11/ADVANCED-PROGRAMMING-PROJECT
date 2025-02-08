@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar Producto - Ropa UsaDa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/comprar.css">
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Ropa UsaDa</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item d-none" id="login-nav">
+                        <a class="nav-link" href="login.html">Iniciar Sesión / Registrarse</a>
+                    </li>
+                    <li class="nav-item d-none" id="logout-nav">
+                        <a class="nav-link" href="#" id="cerrar-sesion">Cerrar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="subir_producto.html">Subir Producto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Detalle del Producto -->
+    <div class="container my-5">
+        <div id="detalle-producto" class="card mb-4">
+            <!-- El contenido del producto se cargará con JS -->
+        </div>
+
+        <!-- Formulario para subir referencia de cliente -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Subir Referencia de Cliente</h5>
+                <form id="formulario-referencia">
+                    <div class="mb-3">
+                        <label for="referencia-cliente" class="form-label">Referencia</label>
+                        <textarea class="form-control" id="referencia-cliente" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar Referencia</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/purchase.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+</html>
