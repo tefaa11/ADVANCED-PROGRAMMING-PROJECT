@@ -1,9 +1,9 @@
-// Manejar el registro de usuario
-document.getElementById("formulario-registro").addEventListener("submit", async function(event) {
+// Handle user registration
+document.getElementById("registration-form").addEventListener("submit", async function(event) {
     event.preventDefault();
 
-    const username = document.getElementById("registro-usuario").value;
-    const password = document.getElementById("registro-contrasena").value;
+    const username = document.getElementById("register-username").value;
+    const password = document.getElementById("register-password").value;
 
     const response = await fetch("http://localhost:8080/api/auth/register", {
         method: "POST",
@@ -12,19 +12,19 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
     });
 
     if (response.ok) {
-        alert("Registro exitoso. Ahora puedes iniciar sesión.");
-        document.getElementById("formulario-registro").reset();
+        alert("Registration successful. You can now log in.");
+        document.getElementById("registration-form").reset();
     } else {
-        alert("Error en el registro. Intenta con otro usuario.");
+        alert("Registration error. Try a different username.");
     }
 });
 
-// Manejar el inicio de sesión
-document.getElementById("formulario-login").addEventListener("submit", async function(event) {
+// Handle user login
+document.getElementById("login-form").addEventListener("submit", async function(event) {
     event.preventDefault();
 
-    const username = document.getElementById("login-usuario").value;
-    const password = document.getElementById("login-contrasena").value;
+    const username = document.getElementById("login-username").value;
+    const password = document.getElementById("login-password").value;
 
     const response = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
@@ -34,19 +34,19 @@ document.getElementById("formulario-login").addEventListener("submit", async fun
 
     if (response.ok) {
         const data = await response.json();
-        alert("Inicio de sesión exitoso");
+        alert("Login successful");
 
-        // Guardar token en localStorage
+        // Save token in localStorage
         localStorage.setItem("token", data.token);  
         localStorage.setItem("username", username);
 
-        // Mostrar la opción de cerrar sesión y ocultar la de iniciar sesión
+        // Show logout option and hide login option
         document.getElementById("login-nav").classList.add("d-none");
         document.getElementById("logout-nav").classList.remove("d-none");
 
-        // Redirigir a la página principal
+        // Redirect to the homepage
         window.location.href = "index.html";
     } else {
-        alert("Usuario o contraseña incorrectos.");
+        alert("Incorrect username or password.");
     }
 });

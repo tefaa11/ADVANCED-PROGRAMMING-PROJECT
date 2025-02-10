@@ -1,20 +1,31 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("token");
 
-    if (token) {
-        // Authenticated user
-        document.getElementById("login-nav").classList.add("d-none");
-        document.getElementById("logout-nav").classList.remove("d-none");
-    } else {
-        // Unauthenticated user
-        document.getElementById("login-nav").classList.remove("d-none");
-        document.getElementById("logout-nav").classList.add("d-none");
-    }
+    const loginNav = document.getElementById("login-nav");
+    const logoutButton = document.getElementById("logout-button");
+    const cerrarSesion = document.getElementById("cerrar-sesion"); // Corregido: seleccionar el <a>
 
-    // Handle logout
-    document.getElementById("logout-button").addEventListener("click", function() {
-        localStorage.removeItem("token");
-        localStorage.removeItem("username");
-        window.location.href = "login.html";
-    });
+    if (loginNav && logoutButton) {
+        if (token) {
+            loginNav.classList.add("d-none");
+            logoutButton.classList.remove("d-none");
+        } else {
+            loginNav.classList.remove("d-none");
+            logoutButton.classList.add("d-none");
+        }
+
+        // Agregar evento al <a> dentro del li
+        if (cerrarSesion) {
+            cerrarSesion.addEventListener("click", function (event) {
+                event.preventDefault(); // Evitar que el enlace recargue la página
+                localStorage.removeItem("token");
+                localStorage.removeItem("username");
+                window.location.href = "login.html";
+            });
+        } else {
+            console.error("El enlace de cerrar sesión no se encontró.");
+        }
+    } else {
+        console.error("Uno o más elementos de la barra de navegación no se encontraron en el DOM.");
+    }
 });
