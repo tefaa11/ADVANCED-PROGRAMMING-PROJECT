@@ -4,7 +4,7 @@ import os
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "http://localhost:5500"}})
 
 # Upload folder configuration
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
@@ -25,6 +25,7 @@ for filename in os.listdir(UPLOAD_FOLDER):
 # In-memory product storage
 products = []
 product_id_counter = 1
+product_references = {}  # Diccionario para almacenar referencias por producto
 
 @app.route('/')
 def home():
@@ -64,6 +65,7 @@ def manage_products():
             "image_url": f"http://localhost:5000/uploads/{filename}"
         }
         products.append(product)
+        product_references[product_id_counter] = []  # Inicializar referencias vacías para el producto
         product_id_counter += 1
 
         return jsonify({"message": "Product added", "product": product}), 201
@@ -75,6 +77,25 @@ def get_product_by_id(product_id):
     if product:
         return jsonify(product)
     return jsonify({"error": "Product not found"}), 404
+
+# Route to manage references for a product
+@app.route('/products/<int:product_id>/references', methods=['GET', 'POST'])
+def manage_references(product_id):
+    if product_id not in product_references:
+        return jsonify({"error": "Product not found"}), 404
+
+    if request.method == 'GET':
+        return jsonify({"product_id": product_id, "references": product_references[product_id]})
+
+    if request.method == 'POST':
+        data = request.json
+        reference_text = data.get("reference")
+
+        if not reference_text:
+            return jsonify({"error": "Reference text is required"}), 400
+
+        product_references[product_id].append(reference_text)
+        return jsonify({"message": "Reference added", "product_id": product_id, "references": product_references[product_id]}), 201
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
