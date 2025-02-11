@@ -65,7 +65,7 @@ Follow these steps to set up and run the project on your local machine.
 
 1. Navigate to the Java backend directory:
    ```bash
-   cd BackendJava
+   cd .\BackendJava\demo\
    ```
 2. Build and run the project using Maven:
    ```bash
