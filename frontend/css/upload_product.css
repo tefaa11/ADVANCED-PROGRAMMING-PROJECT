@@ -1,29 +1,157 @@
 body {
-    background-color: #f8f9fa;
+    background-color: #ede0d4;
+    color: #7f5539;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header, .navbar {
+    background-color: #7f5539;
+    color: #ede0d4;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.navbar a {
+    color: #ede0d4;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.navbar a:hover {
+    color: #ddb892;
+}
+
+
+.navbar-dark.bg-dark {
+    background-color: #9c6644 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #ede0d4;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ddb892;
 }
 
 h1 {
-    color: #343a40;
+    color: #7f5539;
     font-weight: bold;
+    text-align: center;
 }
 
 .card {
+    background-color: #e6ccb2;
+    border: 1px solid #ddb892;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-title {
+    color: #7f5539;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-text {
+    color: #9c6644; /* Color del precio del producto */
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card img {
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+#product-details {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #e6ccb2;
+    border: 1px solid #ddb892;
+    border-radius: 10px;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddb892;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: #7f5539;
 }
 
 .btn-primary {
-    background-color: #007bff;
+    background-color: #9c6644;
     border: none;
+    display: block;
+    margin: 0 auto;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #7f5539;
+}
+
+.btn-primary:active, .btn-primary:focus {
+    background-color: #7f5539 !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.btn-success {
+    background-color: #7f5539;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #9c6644;
+}
+
+button {
+    background-color: #7f5539;
+    color: #ede0d4;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #9c6644;
+}
+
+#search-product {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ddb892;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: #7f5539;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddb892;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    color: #7f5539;
 }
 
 .navbar-brand {
-    font-size: 1.8rem;  
+    font-size: 1.8rem;
     font-weight: bold;
+    color: #ede0d4;
 }
 
 .navbar-nav .nav-link {
@@ -32,4 +160,20 @@ h1 {
 
 .container {
     max-width: 600px;
+}
+
+footer {
+    background-color: #9c6644;
+    color: #ede0d4;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.text-center {
+    color: #9c6644; /* Color de los mensajes como 'No products available.' */
+    font-weight: bold;
+    margin-top: 20px;
 }

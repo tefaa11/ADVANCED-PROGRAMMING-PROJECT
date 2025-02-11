@@ -54,6 +54,13 @@ h1 {
     text-align: center;
 }
 
+.card-text {
+    color: #9c6644; 
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
 .card img {
     max-height: 400px;
     object-fit: cover;
@@ -99,17 +106,10 @@ textarea {
 .btn-success {
     background-color: #7f5539;
     border: none;
-    display: block;
-    margin: 0 auto;
 }
 
 .btn-success:hover {
     background-color: #9c6644;
-}
-.btn-success:active,.btn-success:focus, .btn-primary:active, .btn-primary:focus {
-    background-color: #7f5539 !important;
-    box-shadow: none !important;
-    border: none !important;
 }
 
 button {
@@ -133,6 +133,7 @@ button:hover {
     border: 1px solid #ddb892;
     border-radius: 5px;
     background-color: #f8f9fa;
+    color: #7f5539;
 }
 
 input[type="text"], input[type="password"] {
@@ -141,6 +142,8 @@ input[type="text"], input[type="password"] {
     border: 1px solid #ddb892;
     border-radius: 4px;
     margin-bottom: 10px;
+    background-color: #f8f9fa;
+    color: #7f5539;
 }
 
 .navbar-brand {
@@ -165,4 +168,10 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+.text-center {
+    color: #9c6644; 
+    font-weight: bold;
+    margin-top: 20px;
 }
