@@ -22,10 +22,11 @@ for filename in os.listdir(UPLOAD_FOLDER):
     except Exception as e:
         print(f'Error deleting {file_path}. Reason: {e}')
 
-# In-memory product storage
+# In-memory product and purchase storage
 products = []
 product_id_counter = 1
-product_references = {}  # Diccionario para almacenar referencias por producto
+product_references = {}  # Store references per product
+purchases = []  # Store all purchases
 
 @app.route('/')
 def home():
@@ -65,7 +66,7 @@ def manage_products():
             "image_url": f"http://localhost:5000/uploads/{filename}"
         }
         products.append(product)
-        product_references[product_id_counter] = []  # Inicializar referencias vacías para el producto
+        product_references[product_id_counter] = []  # Initialize empty references for the product
         product_id_counter += 1
 
         return jsonify({"message": "Product added", "product": product}), 201
@@ -96,6 +97,35 @@ def manage_references(product_id):
 
         product_references[product_id].append(reference_text)
         return jsonify({"message": "Reference added", "product_id": product_id, "references": product_references[product_id]}), 201
+
+# New endpoint to handle purchases
+@app.route('/purchase', methods=['POST'])
+def handle_purchase():
+    data = request.json
+
+    required_fields = ['product_id', 'username', 'phone', 'address', 'bank']
+    missing_fields = [field for field in required_fields if not data.get(field)]
+
+    if missing_fields:
+        return jsonify({"error": f"Missing fields: {', '.join(missing_fields)}"}), 400
+
+    # Save the purchase
+    purchase = {
+        "product_id": data['product_id'],
+        "username": data['username'],
+        "phone": data['phone'],
+        "address": data['address'],
+        "bank": data['bank']
+    }
+    purchases.append(purchase)
+
+    print(f"New purchase registered: {purchase}")
+    return jsonify({"message": "Purchase registered successfully", "purchase": purchase}), 201
+
+# Route to retrieve all purchases (for testing or admin purposes)
+@app.route('/purchases', methods=['GET'])
+def get_purchases():
+    return jsonify(purchases), 200
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
